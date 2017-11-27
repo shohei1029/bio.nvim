@@ -11,10 +11,11 @@ class BioNvim(object):
     @neovim.command("SNtest")
     def echo_test(self):
         self.echo("heyhey")
+        print("printheyhey")
 
     @neovim.command("CountFasta")
     def count_fasta_entries(self):
         buf = self.nvim.current.buffer[:]
 #        num = buf.count(">")
 #        self.echo(num)
-        self.echo(buf)
+        self.echo(type(buf))
