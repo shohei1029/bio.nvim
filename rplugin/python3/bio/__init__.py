@@ -15,5 +15,6 @@ class BioNvim(object):
     @neovim.command("CountFasta")
     def count_fasta_entries(self):
         buf = self.nvim.current.buffer[:]
-        num = buf.count(">")
-        self.echo(num)
+#        num = buf.count(">")
+#        self.echo(num)
+        self.echo(buf)
