@@ -23,7 +23,7 @@ class BioNvim(object):
                 cnt += 1
         self.echo(cnt)
 
-    @neovim.command("FastaSingleLine")
+    @neovim.command("FastaSingleLine", sync=False)
     def fasta_single_line(self):
         self.nvim.command("g/^>/s/\n/\r\r/g")
         self.nvim.command("%s/\n\(^[^>]\+\)/\1/g")
