@@ -11,7 +11,6 @@ class BioNvim(object):
     @neovim.command("SNtest")
     def echo_test(self):
         self.echo("heyhey")
-        print("printheyhey")
 
     @neovim.command("CountFasta")
     def count_fasta_entries(self):
@@ -24,4 +23,7 @@ class BioNvim(object):
                 cnt += 1
         self.echo(cnt)
 
-
+    @neovim.command("FastaSingleLine")
+    def fasta_single_line(self):
+        self.nvim.command("g/^>/s/\n/\r\r/g")
+        self.nvim.command("%s/\n\(^[^>]\+\)/\1/g")
