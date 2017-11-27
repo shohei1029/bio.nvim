@@ -8,6 +8,10 @@ class BioNvim(object):
     def echo(self, msg):
         self.nvim.command("echo '{}'".format(msg))
 
+    @neovim.command("SNtest")
+    def echo_test(self):
+        self.echo("heyhey")
+
     @neovim.command("CountFasta")
     def count_fasta_entries(self):
         buf = self.nvim.buffer[:]
