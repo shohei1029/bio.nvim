@@ -18,4 +18,10 @@ class BioNvim(object):
         buf = self.nvim.current.buffer[:]
 #        num = buf.count(">")
 #        self.echo(num)
-        self.echo(type(buf))
+        cnt = 0
+        for line in buf:
+            if line[0] == '>':
+                cnt += 1
+        self.echo(cnt)
+
+
