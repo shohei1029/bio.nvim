@@ -23,7 +23,22 @@ class BioNvim(object):
                 cnt += 1
         self.echo(cnt)
 
-    @neovim.command("FastaSingleLine", sync=False)
+    @neovim.command("SeqLen")
+    def count_fasta_first_sequence_length(self):
+        buf = self.nvim.current.buffer[:]
+#        num = buf.count(">")
+#        self.echo(num)
+        first_seq = ""
+        for line in buf:
+            line = line.rstrip()
+            if line[0] != '>':
+                first_seq += line
+            elif first_seq != "":
+                break
+        self.echo(len(first_seq))
+
+    #動かない
+    @neovim.command("FastaSingleLine")
     def fasta_single_line(self):
         self.nvim.command("g/^>/s/\n/\r\r/g")
         self.nvim.command("%s/\n\(^[^>]\+\)/\1/g")
